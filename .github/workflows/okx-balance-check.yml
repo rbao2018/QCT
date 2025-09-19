@@ -1,0 +1,37 @@
+name: OKX Balance Check
+
+# 每小时运行一次
+on:
+  schedule:
+    # 每小时的第0分钟运行 (UTC时间)
+    - cron: '0 * * * *'
+  
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  check-balance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+        
+    - name: Run OKX balance check
+      env:
+        OKX_READ_AK: ${{ secrets.OKX_READ_AK }}
+        OKX_READ_SK: ${{ secrets.OKX_READ_SK }}
+        OKX_READ_PASSWD: ${{ secrets.OKX_READ_PASSWD }}
+      run: |
+        cd okx
+        python3 get_cash_api.py

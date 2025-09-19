@@ -1,0 +1,2 @@
+# OKX API依赖
+python-okx
