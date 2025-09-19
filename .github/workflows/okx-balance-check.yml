@@ -31,7 +31,7 @@ jobs:
       env:
         OKX_READ_AK: ${{ secrets.OKX_READ_AK }}
         OKX_READ_SK: ${{ secrets.OKX_READ_SK }}
-        OKX_READ_PASSWD: ${{ secrets.OKX_READ_PASSWD }}
+        OKX_READ_PASS: ${{ secrets.OKX_READ_PASS}}
       run: |
         cd okx
         python3 get_cash_api.py
