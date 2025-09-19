@@ -60,9 +60,13 @@ def print_recursive(obj, indent=0, is_list_item=False):
 
 
 flag = "0" # 实盘:0 , 模拟盘：1
-api_key = os.getenv("OKX_READ_AK")
-secret_key = os.getenv("OKX_READ_SK")
-passphrase = os.getenv("OKX_READ_PASSWD")
+api_key = os.getenv("OKX_READ_AK", None)
+secret_key = os.getenv("OKX_READ_SK", None)
+passphrase = os.getenv("OKX_READ_PASSWD", None)
+
+assert api_key is not None, "API key is not set"
+assert secret_key is not None, "Secret key is not set"
+assert passphrase is not None, "Passphrase is not set"
 
 accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
 
