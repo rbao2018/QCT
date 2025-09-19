@@ -68,6 +68,8 @@ assert api_key is not None, "API key is not set"
 assert secret_key is not None, "Secret key is not set"
 assert passphrase is not None, "Passphrase is not set"
 
+print(api_key, secret_key, passphrase)
+
 accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
 
 result = accountAPI.get_account_balance()
