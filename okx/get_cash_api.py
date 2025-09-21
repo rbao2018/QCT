@@ -59,13 +59,14 @@ def print_recursive(obj, indent=0, is_list_item=False):
         print(obj)
 
 
-flag = "0" # 实盘:0 , 模拟盘：1
+if __name__ == "__main__":
+    flag = "0" # 实盘:0 , 模拟盘：1
 
-api_key = os.getenv("OKX_READ_AK", None)
-secret_key = os.getenv("OKX_READ_SK", None)
-passphrase = os.getenv("OKX_READ_PASS", None)
+    api_key = os.getenv("OKX_READ_AK", None)
+    secret_key = os.getenv("OKX_READ_SK", None)
+    passphrase = os.getenv("OKX_READ_PASS", None)
 
-accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
+    accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
 
-result = accountAPI.get_account_balance()
-print_recursive(result)
+    result = accountAPI.get_account_balance()
+    
