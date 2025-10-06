@@ -69,4 +69,4 @@ if __name__ == "__main__":
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
 
     result = accountAPI.get_account_balance()
-    
+    print_recursive(result)
